@@ -4,6 +4,7 @@ const userServices=require('./users.services')
 const router=express.Router();
 
 router.post('/newuser', CreateNewUser)
+router.post('/signin', signIn)
 
 module.exports=router
 
@@ -16,4 +17,10 @@ function CreateNewUser(req, res, next){
         }
     }
         )
+}
+
+function signIn(req, res, next){
+    userServices.signIn(req.body)
+    .then(response=>res.json(response))
+    .catch(next) 
 }
