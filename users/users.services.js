@@ -23,12 +23,13 @@ async function signIn(params) {
 
   const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
 
-  return {token,
+  return {
     user:{
       id:user._id,
       mobile_no:user.mobile_no,
       displayName:user.displayName,
-      email_id:user.email_id
+      email_id:user.email_id,
+      token:token
     }
   }
 }
